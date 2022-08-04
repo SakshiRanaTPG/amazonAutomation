@@ -1,19 +1,19 @@
 pipeline {
     agent any 
     stages {
-        stage('Clone Repo') { 
+        stage('Clean Repo') { 
             steps {
-                bat "git clone https://github.com/SakshiRanaTPG/amazonAutomation.git" 
+                bat "mvn clean" 
             }
         }
         stage('Test') { 
             steps {
-                bat "mvn test -f amazonAutomation"
+                bat "mvn test"
             }
         }
         stage('Deploy') { 
             steps {
-                bat "mvn package -f amazonAutomation"
+                bat "mvn package"
             }
         }
     }
